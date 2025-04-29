@@ -1,3 +1,41 @@
-body {
-    background-color: skyblue;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); 
+@import 'tailwindcss'; 
+
+* {
+  font-family: 'Inter';
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.zoom-carousel {
+  animation: zoomSlow 20s ease-in-out forwards;
+}
+
+@keyframes zoomSlow {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+
+@layer base {
+  .btn-principal {
+    @apply bg-white text-black font-semibold rounded-full py-4 px-8 w-fit hover:bg-zinc-300 transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-secondaire {
+    @apply border-2 border-white text-white font-semibold rounded-full py-4 px-8 w-fit hover:bg-zinc-100/10 transition-all duration-300;
+  }
+
+  .title1 {
+    @apply text-3xl lg:text-5xl uppercase font-bold;
+  }
 }
