@@ -66,7 +66,7 @@ Encore
     //.enableTypeScriptLoader()
 
     // uncomment if you use React
-    //.enableReactPreset()
+    .enableReactPreset()
 
     .copyFiles({
         from: './assets/images',
@@ -80,6 +80,9 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
     .enablePostCssLoader()
+    .configureWatchOptions((watchOptions) => {
+        watchOptions.ignored = /node_modules/;
+      })
 ;
 
 module.exports = Encore.getWebpackConfig();

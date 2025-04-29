@@ -1,7 +1,5 @@
-
 services:
-
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   # database:
   #   image: postgres:${POSTGRES_VERSION:-16}-alpine
   #   environment:
@@ -16,10 +14,9 @@ services:
   #     start_period: 60s
   #   volumes:
   #     - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
-
+  # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+  # - ./docker/db/data:/var/lib/postgresql/data:rw
+  ###< doctrine/doctrine-bundle ###
 
   web:
     image: php:8.3-apache
@@ -42,7 +39,6 @@ services:
       context: .
       dockerfile: Dockerfile
 
-
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin
   #   container_name: phpmyadmin-symfony
@@ -56,12 +52,18 @@ services:
   #   networks:
   #     - app-network
 
+  node:
+    image: node:18
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run watch"
+
 volumes:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
 
-
 networks:
   app-network:
-

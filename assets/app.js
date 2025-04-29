@@ -1,4 +1,4 @@
-import './bootstrap.js';
+// import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -9,20 +9,35 @@ import './bootstrap.js';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
-// import Swiper JS
+
+// Carousel
+
 import Swiper from 'swiper';
-// import Swiper styles
 import 'swiper/css';
 
-
 const swiperHeader = new Swiper(".swiperHeader", {
-    direction: "horizontal",
-    loop: true,
-    autoplay: {
-      delay: 20000,
-    },
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true,
-    },
-  });
+  direction: "horizontal",
+  loop: true,
+  autoplay: {
+    delay: 20000,
+  },
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true,
+  },
+});
+
+
+
+// React
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import TestComponent from './js/components/test.js';
+
+document.addEventListener('DOMContentLoaded', function () {
+  const showTest = document.getElementById('showTest');
+  if (showTest) {
+    const root = ReactDOM.createRoot(showTest);
+    root.render(<TestComponent />);
+  }
+});
